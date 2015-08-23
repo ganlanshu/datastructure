@@ -45,7 +45,7 @@ class UnorderedList:
 
     def search(self,item): #查看item是否在linklist里，返回bool类型
         current = self.head
-        while current != None: #列表不为空
+        while current != None: #traverse until the last node
             if current.getData() == item:
                 return True
             else:
@@ -70,11 +70,120 @@ class UnorderedList:
             else:
                 previous.setNext(current.getNext())
         else:
-            print ('Warning! item can not be found in linklist')
+            print ('Warnin    ! item can not be found in linklist')
 
+    def append(self,item):
+        current = self.head
+        previous = None
+        while current != None:
+            previous = current
+            current = current.getNext()
+                
+        temp = Node(item)
+        if previous == None: #列表原为空
+            self.head = temp
+            temp.setNext(None)
+        else:
+            previous.setNext(temp)
+            temp.setNext(None)
 
+    def index(self,item):
+        index = 0
+        current = self.head
+        found = False
+        while not found and current != None:
+            if current.getData() == item:
+                found = True
+            else:
+                current = current.getNext()
+                index += 1
+        if not found:
+            print ('item not in list')
+            return False
+        else:
+            return index
+        
+
+    def insert(self,pos,item):
+        if pos < 0:
+            print ('Warnin    ! pos should be zero or positive')
+            return
+        index = 0
+        previous = None
+        current = self.head
+        while index < pos and current != None:
+            previous = current
+            current = current.getNext()
+            index += 1
+        
+        temp = Node(item)
+
+        if previous == None: # pos 为0的情况
+            temp.setNext(self.head)
+            self.head = temp
+
+        else: #pos的值大于list长度时，插入list末尾,以及普通的情况，如插入位置前后都有节点        
+            temp.setNext(current)
+            previous.setNext(temp)
+    """
+    def pop(self):
+        if self.size() < 1 :
+            print ('Warnin     ! no elements to delete')
+            return
+        current = self.head
+        previous = None
+        while current.getNext() != None:
+            previous = current
+            current = current.getNext()
+        if previous == None : #列表只有1个元素
+            self.head = None
+        else:
+            previous.setNext(None)
+    
+        return current.getData()
+
+    """
+    def pop(self,pos=None): #删除制定位置
+        if pos == None:
+            pos = self.size() - 1
+        if pos > self.size() - 1 :
+            print ('Warnin    ! index out of ran    e')
+            return
+        index = 0
+        current = self.head
+        previous = None
+        while index < pos:
+            previous = current
+            current = current.getNext()
+            index += 1
+        if previous == None:
+            self.head = None 
+        else:
+            previous.setNext(current.getNext())    
+
+        return current.getData()
+
+    
+        
+
+    
+    
+
+        
 if __name__ == '__main__':
+    
     mylist = UnorderedList()
+    mylist.append(5)
+    mylist.append(67)
+    mylist.append(0)
+    mylist.append('guo')
+    print mylist.pop()
+    print mylist.pop(1)
+    print mylist.index(67)
+    print mylist.index(5)
+    print mylist.pop()
+    print mylist.index(0)
+    print mylist.index(5)
     mylist.add(98)
     mylist.add(76)
     print mylist.isEmpty()
@@ -82,10 +191,19 @@ if __name__ == '__main__':
     print mylist.search(2)
     print mylist.search(98)
     print mylist.search(76)
+    print mylist.index(10)
+    print mylist.index(76)
+    print mylist.index(98)
+    print mylist.index(5)
+    print mylist.index(0)
     mylist.remove(76)
     mylist.remove(5)
     print mylist.search(76)
     print mylist.size()
     mylist.remove(98)
+    print mylist.index(98)
     print mylist.search(98)
+    print mylist.size()
+    mylist.insert(0,7)
+    mylist.insert(4,12)
     print mylist.size()
