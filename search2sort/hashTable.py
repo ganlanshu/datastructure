@@ -68,7 +68,7 @@ class HashTable:
             self.slots[index] = None
             self.data[index] = None
         else:
-            print '%d不在hash表，无法删除'
+            print '%d不在hash表，无法删除' %key
 
     def __delitem__(self,key):
         self.delete(key)
