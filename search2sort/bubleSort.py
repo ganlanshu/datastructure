@@ -45,3 +45,5 @@ if __name__ == '__main__':
     print bubleSort(lst)
     lst = [5,4,23,67,9,0]
     print bubleShortSort(lst)
+    lst3=[10,5]
+    print bubleShortSort(lst3)

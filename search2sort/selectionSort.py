@@ -57,4 +57,6 @@ if __name__ == '__main__':
     lst2 = range(10,0,-1)
     print lst2
     print selectionSort(lst2)
+    lst3 = [10,9]
+    print selectionSort(lst3)
 
