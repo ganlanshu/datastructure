@@ -25,7 +25,7 @@ def sequentialSearchGuard(alist,item):
     lenth = len(alist)
     while alist[pos] != item:
         pos += 1 
-    return pos #index  == lenth 时没有查找到
+    return pos # pos==lenth 时没有查找到
 
 
 if __name__ == '__main__':
