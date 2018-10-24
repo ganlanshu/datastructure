@@ -32,10 +32,10 @@ class binaryHeap:
 
                         
     def minChild(self,i):#返回最小子树的索引
-            if i*2 > self.currentSize:
-                return 2*i #只有左子树 
-            else: #有左子树和右子树
-                if self.heaplist[2*i] > self.heaplist[2*i+1]:
-                    return 2*i+1
-                else:
-                    return 2*i
+        if i*2 > self.currentSize:
+            return 2*i #只有左子树 
+        else: #有左子树和右子树
+            if self.heaplist[2*i] > self.heaplist[2*i+1]:
+                return 2*i+1
+           else:
+               return 2*i
